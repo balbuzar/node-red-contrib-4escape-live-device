@@ -1,0 +1,164 @@
+<!-- Domain Config -->
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('4escape-live-config', {
+        category: 'config',
+        defaults: {
+            domain: { value:"", required: true },
+            apikey: { value:"" }
+        },
+        label: function() {
+            return this.domain || 'domain';
+        }
+    });
+})();
+</script>
+
+<script type="text/x-red" data-template-name="4escape-live-config">
+    <div class="form-row">
+        <label for="node-config-input-domain"><i class="fa fa-globe"></i> Domain</label>
+        <input type="text" id="node-config-input-domain" placeholder="Domain">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apikey"><i class="fa fa-key"></i> API Key</label>
+        <input type="text" id="node-config-input-apikey" placeholder="API Key">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="4escape-live-config">
+    <p>Config for connecting to an 4escape LIVE instance</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>Domain <span class="property-type">string</span> </dt>
+        <dd> the 4escape instance name like <i><strong>escapegame</strong>.4escape.io</i></dd>
+        <dt class="optional">API Key <span class="property-type">string</span></dt>
+        <dd> the secured API Key available from 4escape settings.</dd>
+    </dl>
+</script>
+
+
+
+
+<!-- Device Config -->
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('4escape-live-device-config', {
+        category: 'config',
+        defaults: {
+            roomId: {value:""},
+            deviceId: {value:""}
+        },
+        label: function() {
+            return this.deviceId || 'device';
+        }
+    });
+})();
+</script>
+
+<script type="text/x-red" data-template-name="4escape-live-device-config">
+    <div class="form-row">
+        <label for="node-config-input-roomId"><i class="fa fa-server"></i> Room ID</label>
+        <input type="text" id="node-config-input-roomId" placeholder="Room ID">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-deviceId"><i class="fa fa-server"></i> Device ID</label>
+        <input type="text" id="node-config-input-deviceId" placeholder="Device ID">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="4escape-live-device-config">
+    <p>Room & Device</p>
+</script>
+
+
+
+
+<!-- Device Connector -->
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('4escape-live-device-connector', {
+        category: 'input',
+        inputs: 0,
+        outputs: 1,
+        color: '#F58F36',
+        paletteLabel: '4escape Connector',
+        defaults: {
+            server: {
+                value: '',
+                type: '4escape-live-config',
+                required: true
+            },
+            device: {
+                value: '',
+                type: '4escape-live-device-config',
+                required: true
+            },
+            name: {
+                value: ''
+            }
+        },
+        label: function() {
+            return this.name || [this.server || 'server', '@', this.deviceId || 'device'].join('') || '4escape Device Connector';
+        }
+    });
+})();
+</script>
+
+<script type="text/x-red" data-template-name="4escape-live-device-connector">
+    <div class="form-row">
+        <label for="node-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-server"></i> Device</label>
+        <input type="text" id="node-input-device" placeholder="Device">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="4escape-live-device-connector">
+    <p>Device Connector</p>
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Listener ClueText -->
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('4escape-live-listener-clue-text', {
+        category: 'function',
+        inputs: 1,
+        outputs: 1,
+        color: '#F58F36',
+        paletteLabel: '4escape - onClueText',
+        defaults: {
+            name: {
+                value: ''
+            }
+        },
+        label: function() {
+            return this.name || 'onClueText'
+        }
+    });
+})();
+</script>
+
+<script type="text/x-red" data-template-name="4escape-live-listener-clue-text">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="4escape-live-listener-clue-text">
+    <p>On clue text</p>
+</script>

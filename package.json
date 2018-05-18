@@ -1,0 +1,19 @@
+{
+    "name": "red-contrib-4escape-live-device",
+    "version": "1.0.0",
+    "description": "",
+    "main": "device.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Potion Of Creativity",
+    "license": "GPL-3.0",
+    "dependencies": {
+        "socket.io-client": "^2.1.0"
+    },
+    "node-red": {
+        "nodes": {
+            "device": "device.js"
+        }
+    }
+}
