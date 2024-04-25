@@ -25,6 +25,7 @@ module.exports = function(RED) {
         var self = this;
 
         var socket = io(`${config.domain}.4escape.io/live`, {
+            rejectUnauthorized: false,
             path: '/realtime',
             transports: ['websocket']
         })
